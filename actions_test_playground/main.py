@@ -9,6 +9,7 @@ from __future__ import annotations
 from beartype import beartype
 from loguru import logger
 
+
 @beartype
 def get_hello(name: str) -> str:
     """Get A Hello String
@@ -32,3 +33,4 @@ def get_hello(name: str) -> str:
 
 if __name__ == '__main__':
     logger.info(get_hello('Mike lane'))
+
