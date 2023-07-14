@@ -45,7 +45,7 @@ jobs:
             
             ## Examples:
             ### :+1: GOOD: 
-            #### SC-1234: chore(engine): Foo the bar
+            * `SC-1234: chore(engine): Foo the bar`
             
                  SC-1234: chore(engine): Foo the bar
                  ^        ^     ^        ^
@@ -56,18 +56,10 @@ jobs:
                  -------------------------- ShortCut ticket
                  
             ### :-1: BAD: 
-            * Foo the bar  
+            * `Foo the bar`
               * :point_up: Shortcut ticket, type, and scope are required
-            * [WIP] SC-1234 
+            * `[WIP] SC-1234`
               * :point_up: WIP only allowed on draft PRs.
-            
-            ## Details:
-            ```
-            ${{ steps.lint_pr_title.outputs.error_message }}
-            ```
-            
-            ### NOTE:
-            Because of the limitations of the action, a missing or invalid shortcut ticket will output an error message about a missing type.
 
       # Delete a previous comment when the issue has been resolved
       - if: ${{ steps.lint_pr_title.outputs.error_message == null }}
