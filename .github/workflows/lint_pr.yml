@@ -36,20 +36,27 @@ jobs:
         with:
           header: pr-title-lint-error
           message: |
-            ## :rocket: You opened a pull request and that's awesome! :rocket:
+            # :rocket: You opened a pull request and that's awesome! :rocket:
             
-            #### :poop: ...but your PR title doesn't meet our standards :poop:
+            ### :poop: ...but your PR title doesn't meet our standards :poop:
             
             We require pull request titles to be prefixed with the shortcut number and then to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your proposed title needs to be adjusted.
             
-            ### #xamples:
-            #### :white_check_mark: GOOD: 
-            SC-1234: chore(engine): Foo the bar
+            ## Examples:
+            ### :white_check_mark: GOOD: 
+            #### SC-1234: chore(engine): Foo the bar
+                 ^        ^     ^        ^
+                 |        |     |        |
+                 |        |     -- scope -- Description
+                 |        -- type
+                 -- ShortCut ticket
+                 
+            ### :x: BAD: 
+            #### Foo the bar  <-- Shortcut ticket, type, and scope are required
+            #### [WIP] SC-1234  <-- [WIP] only allowed on draft PRs 
             
-            #### :x: BAD: 
-            Foo the bar
             
-            
+            ## Details:
             ```
             ${{ steps.lint_pr_title.outputs.error_message }}
             ```
