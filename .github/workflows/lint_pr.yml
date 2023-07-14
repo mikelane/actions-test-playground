@@ -45,6 +45,8 @@ jobs:
             ## Examples:
             ### :white_check_mark: GOOD: 
             #### SC-1234: chore(engine): Foo the bar
+            
+                 SC-1234: chore(engine): Foo the bar
                  ^        ^     ^        ^
                  |        |     |        |
                  |        |     -- scope -- Description
@@ -52,9 +54,10 @@ jobs:
                  -- ShortCut ticket
                  
             ### :x: BAD: 
-            #### Foo the bar  <-- Shortcut ticket, type, and scope are required
+            #### Foo the bar  
+            ##### :point_up: Shortcut ticket, type, and scope are required
             #### [WIP] SC-1234  <-- [WIP] only allowed on draft PRs 
-            
+            ##### :point_up: WIP only allowed on draft PRs.
             
             ## Details:
             ```
