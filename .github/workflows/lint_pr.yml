@@ -27,8 +27,8 @@ jobs:
           requireScope: true
           ignoreLabels: |
             dependencies
-          headerPattern: '^(SC-\d{4,})\: (\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$'
-          headerPatternCorrespondence: ticket, type, scope, subject
+          headerPattern: '^SC-\d{4,}\: (\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$'
+          headerPatternCorrespondence: type, scope, subject
 
       - uses: marocchino/sticky-pull-request-comment@v2
         # When the previous steps fails, the workflow would stop. By adding this
@@ -53,7 +53,7 @@ jobs:
                  |        |     |        -- subject
                  |        |     ----------- scope
                  |        ----------------- type
-                 -- ----------------------- ShortCut ticket
+                 -------------------------- ShortCut ticket
                  
             ### :-1: BAD: 
             * Foo the bar  
@@ -65,6 +65,9 @@ jobs:
             ```
             ${{ steps.lint_pr_title.outputs.error_message }}
             ```
+            
+            ### NOTE:
+            Because of the limitations of the action, a missing or invalid shortcut ticket will output an error message about a missing type.
 
       # Delete a previous comment when the issue has been resolved
       - if: ${{ steps.lint_pr_title.outputs.error_message == null }}
