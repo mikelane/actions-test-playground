@@ -47,14 +47,16 @@ jobs:
             ### :+1: GOOD: 
             * `SC-1234: chore(engine): Foo the bar`
             
-                 SC-1234: chore(engine): Foo the bar
-                 ^        ^     ^        ^
-                 |        |     |        |
-                 |        |     |        -- subject
-                 |        |     ----------- scope
-                 |        ----------------- type
-                 -------------------------- ShortCut ticket
-                 
+             ```
+             SC-1234: chore(engine): Foo the bar
+             ^        ^     ^        ^
+             |        |     |        |
+             |        |     |        -- subject
+             |        |     ----------- scope
+             |        ----------------- type
+             -------------------------- ShortCut ticket
+             ```
+            
             ### :-1: BAD: 
             * `Foo the bar`
               * :point_up: Shortcut ticket, type, and scope are required
