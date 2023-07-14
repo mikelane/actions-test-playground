@@ -27,7 +27,8 @@ jobs:
           requireScope: true
           ignoreLabels: |
             dependencies
-          headerPattern: '^SC-\d{4,}\: (\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$'
+          headerPattern: '^(SC-\d{4,}\: )(\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$'
+          headerPatternCorrespondence: ticket, type, scope, subject
 
       - uses: marocchino/sticky-pull-request-comment@v2
         # When the previous steps fails, the workflow would stop. By adding this
@@ -49,14 +50,15 @@ jobs:
                  SC-1234: chore(engine): Foo the bar
                  ^        ^     ^        ^
                  |        |     |        |
-                 |        |     -- scope -- Description
-                 |        -- type
-                 -- ShortCut ticket
+                 |        |     |        -- subject
+                 |        |     ----------- scope
+                 |        ----------------- type
+                 -- ----------------------- ShortCut ticket
                  
             ### :x: BAD: 
             * Foo the bar  
               * :point_up: Shortcut ticket, type, and scope are required
-            * [WIP] SC-1234  <-- [WIP] only allowed on draft PRs 
+            * [WIP] SC-1234 
               * :point_up: WIP only allowed on draft PRs.
             
             ## Details:
