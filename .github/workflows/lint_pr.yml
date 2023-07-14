@@ -36,11 +36,19 @@ jobs:
         with:
           header: pr-title-lint-error
           message: |
-            Hey there and thank you for opening this pull request! 👋🏼
+            ## :rocket: You opened a pull request and that's awesome! :rocket:
             
-            We require pull request titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your proposed title needs to be adjusted.
-
-            Details:
+            #### :poop: ...but your PR title doesn't meet our standards :poop:
+            
+            We require pull request titles to be prefixed with the shortcut number and then to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your proposed title needs to be adjusted.
+            
+            ### #xamples:
+            #### :white_check_mark: GOOD: 
+            SC-1234: chore(engine): Foo the bar
+            
+            #### :x: BAD: 
+            Foo the bar
+            
             
             ```
             ${{ steps.lint_pr_title.outputs.error_message }}
