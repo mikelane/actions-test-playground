@@ -23,12 +23,27 @@ jobs:
           types: |
             bug
             chore
+            ci
+            docs
+            documentation
+            feat
             feature
+            fix
+            hotfix
+            revert
+            test
+          scopes: |
+            engine
+            graph_api
+            frontend
+            rewst-app
+            database
+            actions
           requireScope: true
           ignoreLabels: |
             dependencies
-          headerPattern: '^SC-\d{4,}\: (\w*)(?:\(([\w\$\.\-\* ]*)\))?\: (.*)$'
-          headerPatternCorrespondence: type, scope, subject
+            WIP
+          headerPattern: '^SC-\d+\: (\w*)(?:\(([\w\$\.\-\* ]*)\))\: (.*)$'
 
       - uses: marocchino/sticky-pull-request-comment@v2
         # When the previous steps fails, the workflow would stop. By adding this
@@ -62,10 +77,11 @@ jobs:
               * :point_up: Shortcut ticket, type, and scope are required
             * `[WIP] SC-1234`
               * :point_up: WIP only allowed on draft PRs.
+            
 
       # Delete a previous comment when the issue has been resolved
       - if: ${{ steps.lint_pr_title.outputs.error_message == null }}
         uses: marocchino/sticky-pull-request-comment@v2
-        with:   
+        with:
           header: pr-title-lint-error
           delete: true
