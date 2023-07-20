@@ -43,7 +43,7 @@ jobs:
           ignoreLabels: |
             dependencies
             WIP
-          headerPattern: '^SC-\d+\: (\w*)(?:\(([\w\$\.\-\* ]*)\))\: (.*)$'
+          headerPattern: '^SC-\d+\: (\w*)(?:\(([\w\$\.\-\*,]*)\))\: (.*)$'
 
       - uses: marocchino/sticky-pull-request-comment@v2
         # When the previous steps fails, the workflow would stop. By adding this
@@ -71,10 +71,15 @@ jobs:
              |        ----------------- type
              -------------------------- ShortCut ticket
              ```
+            * `SC-1234: chore(engine,graph_api,database): Foo the bar`
+              * :point_up: Multiple scopes are allowed, but must be comma separated
+            
             
             ### :-1: BAD: 
             * `Foo the bar`
               * :point_up: Shortcut ticket, type, and scope are required
+            * `SC-1234: fart(poop): Foo the bar`
+              * :point_up: `fart` is not a valid type, `poop` is not a valid scope
             * `[WIP] SC-1234`
               * :point_up: WIP only allowed on draft PRs.
             
